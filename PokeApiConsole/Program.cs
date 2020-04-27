@@ -10,8 +10,11 @@ namespace PokeApiConsole
         static async Task Main()
         {
             PokeApiClient client = new PokeApiClient();
-            string result = await client.GetPokemonByName("charizard");
-            Console.WriteLine(result);
+            Pokemon result = await client.GetPokemonByName("charizard");
+            Console.WriteLine($"Pokemon Id: {result.id} \n" +
+                $"Name: {result.name} \n" +
+                $"Weight: {result.weight} Hectograms\n" +
+                $"Height: {result.height} Inches");
             Console.ReadKey();
         }
     }

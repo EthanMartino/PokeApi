@@ -35,15 +35,16 @@ namespace PokeApiWebsite.Controllers
 
             PokdexEntryViewModel entry = new PokdexEntryViewModel()
             {
-                Id = result.id,
+                Id = result.Id,
                 Name = result.Name,
                 Height = result.Height.ToString(),
                 Weight = result.Weight.ToString(),
-                PokedexImageUrl = result.sprites.FrontDefault,
+                PokedexImageUrl = result.Sprites.FrontDefault,
                 MoveList = resultMoves
                 //Add MoveList
                 //Refactor Property names
             };
+            entry.Name = entry.Name.FirstCharToUpper();
 
             return View(entry);
         }

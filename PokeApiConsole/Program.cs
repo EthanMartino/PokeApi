@@ -17,9 +17,9 @@ namespace PokeApiConsole
                 Pokemon result = await client.GetPokemonById(6);
 
                 Console.WriteLine($"Pokemon Id: {result.id} \n" +
-                    $"Name: {result.name} \n" +
-                    $"Weight: {result.weight} Hectograms\n" +
-                    $"Height: {result.height} Inches");
+                    $"Name: {result.Name} \n" +
+                    $"Weight: {result.Weight} Hectograms\n" +
+                    $"Height: {result.Height} Inches");
                 Console.ReadKey();
             }
             catch (ArgumentException)

@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace PokeApiWebsite.Models
 {
+    /// <summary>
+    /// Information for a single Pokemon's Pokedex entry
+    /// </summary>
     public class PokemonPokedexEntryViewModel
     {
         public string Name { get; set; }
@@ -16,5 +19,7 @@ namespace PokeApiWebsite.Models
         public string Weight { get; set; }
 
         public IEnumerable<string> MoveList { get; set; }
+
+        public string PokedexImageUrl { get; set; }
     }
 }

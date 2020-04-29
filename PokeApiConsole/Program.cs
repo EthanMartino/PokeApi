@@ -13,7 +13,9 @@ namespace PokeApiConsole
             PokeApiClient client = new PokeApiClient();
             try
             {
-                Pokemon result = await client.GetPokemonByName("charizard");
+                //Pokemon result = await client.GetPokemonByName("charizard");
+                Pokemon result = await client.GetPokemonById(6);
+
                 Console.WriteLine($"Pokemon Id: {result.id} \n" +
                     $"Name: {result.name} \n" +
                     $"Weight: {result.weight} Hectograms\n" +

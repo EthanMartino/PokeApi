@@ -25,5 +25,23 @@ namespace PokeApiWebsite.Models
 
             return result;
         }
+
+        public static PokdexEntryViewModel GetPokedexEntryFromPokemon(Pokemon result)
+        {
+            PokdexEntryViewModel entry = new PokdexEntryViewModel()
+            {
+                Id = result.Id,
+                Name = result.Name,
+                Height = result.Height.ToString(),
+                Weight = result.Weight.ToString(),
+                PokedexImageUrl = result.Sprites.FrontDefault,
+                MoveList = result.moves
+                    .OrderBy(m => m.move.name)
+                    .Select(m => m.move.name)
+                    .ToArray()
+            };
+            entry.Name = entry.Name.FirstCharToUpper();
+            return entry;
+        }
     }
 }

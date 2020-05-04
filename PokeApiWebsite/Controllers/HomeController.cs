@@ -19,35 +19,17 @@ namespace PokeApiWebsite.Controllers
             _logger = logger;
         }
 
-        public async Task<IActionResult> IndexAsync()
+        public async Task<IActionResult> Index(int? id)
         {
-            PokeApiClient myClient = new PokeApiClient();
+            int desiredId = id ?? 1;
+            ViewData["Id"] = desiredId;
+            Pokemon result = await PokeApiHelper.GetById(desiredId);
 
-
-            Pokemon result = await myClient.GetPokemonById(6);
-
-            List<string> resultMoves = new List<string>();
-            foreach (Move currentMove in result.moves)
-            {
-                resultMoves.Add(currentMove.move.name);
-            }
-            resultMoves.Sort();
-
-            PokdexEntryViewModel entry = new PokdexEntryViewModel()
-            {
-                Id = result.Id,
-                Name = result.Name,
-                Height = result.Height.ToString(),
-                Weight = result.Weight.ToString(),
-                PokedexImageUrl = result.Sprites.FrontDefault,
-                MoveList = resultMoves
-                //Add MoveList
-                //Refactor Property names
-            };
-            entry.Name = entry.Name.FirstCharToUpper();
+            PokdexEntryViewModel entry = PokeApiHelper.GetPokedexEntryFromPokemon(result);
 
             return View(entry);
         }
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
